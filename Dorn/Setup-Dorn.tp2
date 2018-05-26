@@ -2,9 +2,21 @@ BACKUP ~Dorn/Backup~
 
 AUTHOR ~trinit~ 
 
-VERSION ~v3.0~ 
+VERSION ~v3.2~ 
 
 AUTO_TRA ~Dorn/%s~
+
+ALWAYS
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
 
 LANGUAGE ~English~ ~English~ ~Dorn/English/Setup-Dorn.tra~
 
